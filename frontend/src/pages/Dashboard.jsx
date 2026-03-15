@@ -362,7 +362,7 @@ function AttendanceViz({ stats, loading }) {
                         overflow: 'hidden',
                         background: '#f1f5f9',
                         border: '1px solid #e2e8f0',
-                        marginBottom: 18
+                        marginBottom: 16
                     }}>
                         {segs.map(s => s.value > 0 && (
                             <div
@@ -372,6 +372,18 @@ function AttendanceViz({ stats, loading }) {
                                     background: s.color
                                 }}
                             />
+                        ))}
+                    </div>
+                    <div style={{ display: 'flex', gap: 20, flexWrap: 'wrap' }}>
+                        {segs.map(s => (
+                            <div key={s.label} style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                                <span style={{ width: 8, height: 8, borderRadius: '50%', background: s.color, flexShrink: 0 }} />
+                                <span style={{ fontSize: 12, color: '#64748b' }}>{s.label}</span>
+                                <span style={{ fontSize: 13, fontWeight: 700, color: '#0f172a' }}>
+                                    {Math.round((s.value / total) * 100)}%
+                                </span>
+                                <span style={{ fontSize: 11, color: '#94a3b8' }}>({s.value})</span>
+                            </div>
                         ))}
                     </div>
                 </div>
