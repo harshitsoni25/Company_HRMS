@@ -12,7 +12,7 @@ const navItems = [
     { to: "/attendance", label: "Attendance", icon: CalendarCheck },
 ];
 
-export default function Sidebar() {
+export default function Sidebar({ onClose }) {
     return (
         <aside style={{ width: 240, minHeight: '100vh', background: 'linear-gradient(180deg, #1e2a4a 0%, #162040 100%)', borderRight: 'none', display: 'flex', flexDirection: 'column', fontFamily: 'inherit', boxShadow: '4px 0 15px rgba(0,0,0,0.15)' }}>
             <style>{`
@@ -106,6 +106,7 @@ export default function Sidebar() {
                         key={to}
                         to={to}
                         end={to === "/"}
+                        onClick={onClose}
                         className={({ isActive }) => `sidebar-nav-link${isActive ? ' active' : ''}`}
                     >
                         {({ isActive }) => (
