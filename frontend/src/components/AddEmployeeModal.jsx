@@ -62,29 +62,29 @@ export default function AddEmployeeModal({ onClose, onAdded }) {
 
             {/* Modal */}
             <div className="
-        relative w-full max-w-md 
-        bg-neutral-900 
-        rounded-2xl 
-        shadow-2xl shadow-black/60
-        border border-neutral-800
+        relative w-full max-w-md
+        bg-white
+        rounded-2xl
+        shadow-xl shadow-slate-200/60
+        border border-slate-200
         overflow-hidden
         transition-colors
       ">
                 {/* Header */}
-                <div className="flex items-center justify-between px-6 py-4 border-b border-neutral-800">
+                <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100">
                     <div className="flex items-center gap-3">
                         <div className="
-              w-8 h-8 rounded-lg 
-              bg-indigo-500/10 
+              w-8 h-8 rounded-lg
+              bg-blue-50
               flex items-center justify-center
             ">
-                            <UserPlus size={15} className="text-indigo-400" />
+                            <UserPlus size={15} className="text-blue-600" />
                         </div>
                         <div>
-                            <h2 className="text-sm font-semibold text-white">
+                            <h2 className="text-sm font-semibold text-slate-800">
                                 Add Employee
                             </h2>
-                            <p className="text-xs text-gray-400">
+                            <p className="text-xs text-slate-500">
                                 Fill in the details below
                             </p>
                         </div>
@@ -92,13 +92,13 @@ export default function AddEmployeeModal({ onClose, onAdded }) {
                     <button
                         onClick={onClose}
                         className="
-              w-7 h-7 flex items-center justify-center 
-              rounded-lg 
-              hover:bg-neutral-800 
+              w-7 h-7 flex items-center justify-center
+              rounded-lg
+              hover:bg-slate-100
               transition-colors
             "
                     >
-                        <X size={15} className="text-gray-400" />
+                        <X size={15} className="text-slate-400" />
                     </button>
                 </div>
 
@@ -114,8 +114,8 @@ export default function AddEmployeeModal({ onClose, onAdded }) {
                             placeholder="e.g. EMP001"
                             className={`
                 input font-mono uppercase tracking-wide
-                focus:border-indigo-500
-                focus:ring-indigo-500/30
+                focus:border-blue-500
+                focus:ring-blue-400/30
                 ${errors.employee_id ? 'border-red-500 focus:border-red-500 focus:ring-red-500/30' : ''}
               `}
                         />
@@ -134,8 +134,8 @@ export default function AddEmployeeModal({ onClose, onAdded }) {
                             placeholder="e.g. Aisha Sharma"
                             className={`
                 input
-                focus:border-indigo-500
-                focus:ring-indigo-500/30
+                focus:border-blue-500
+                focus:ring-blue-400/30
                 ${errors.full_name ? 'border-red-500 focus:border-red-500 focus:ring-red-500/30' : ''}
               `}
                         />
@@ -155,8 +155,8 @@ export default function AddEmployeeModal({ onClose, onAdded }) {
                             placeholder="e.g. aisha@company.com"
                             className={`
                 input
-                focus:border-indigo-500
-                focus:ring-indigo-500/30
+                focus:border-blue-500
+                focus:ring-blue-400/30
                 ${errors.email ? 'border-red-500 focus:border-red-500 focus:ring-red-500/30' : ''}
               `}
                         />
@@ -174,8 +174,8 @@ export default function AddEmployeeModal({ onClose, onAdded }) {
                             onChange={handleChange}
                             className={`
                 input
-                focus:border-indigo-500
-                focus:ring-indigo-500/30
+                focus:border-blue-500
+                focus:ring-blue-400/30
                 ${errors.department ? 'border-red-500 focus:border-red-500 focus:ring-red-500/30' : ''}
               `}
                         >
@@ -194,15 +194,7 @@ export default function AddEmployeeModal({ onClose, onAdded }) {
                         <button
                             type="button"
                             onClick={onClose}
-                            className="
-                btn-secondary
-                px-4 py-2 text-sm font-medium
-                text-gray-300
-                bg-neutral-900
-                border border-neutral-700
-                hover:bg-neutral-800
-                active:bg-neutral-700
-              "
+                            className="btn-secondary px-4 py-2 text-sm font-medium"
                         >
                             Cancel
                         </button>
@@ -214,9 +206,6 @@ export default function AddEmployeeModal({ onClose, onAdded }) {
                 btn-primary
                 px-5 py-2 text-sm font-medium
                 flex items-center gap-2
-                bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700
-                text-white
-                shadow-sm
                 disabled:opacity-60 disabled:cursor-not-allowed
               "
                         >

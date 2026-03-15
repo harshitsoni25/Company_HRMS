@@ -117,12 +117,13 @@ export default function MarkAttendanceForm({ onMarked }) {
         box-shadow: 0 0 16px 0 rgba(239, 68, 68, 0.35), inset 0 1px 0 rgba(255,255,255,0.12);
     }
     .status-btn.inactive {
-        background: #141414;
-        color: #6b7280;
+        background: #f8fafc;
+        color: #94a3b8;
+        border: 1px solid #e2e8f0;
     }
     .status-btn.inactive:hover {
-        background: #1e1e1e;
-        color: #9ca3af;
+        background: #f1f5f9;
+        color: #64748b;
     }
 
     /* ── Submit button ── */
@@ -140,12 +141,12 @@ export default function MarkAttendanceForm({ onMarked }) {
         cursor: pointer;
         letter-spacing: 0.03em;
         transition: opacity 0.2s, box-shadow 0.2s, transform 0.12s;
-        background: linear-gradient(135deg, #3730a3 0%, #4f46e5 50%, #6366f1 100%);
+        background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 50%, #3b82f6 100%);
         color: #fff;
-        box-shadow: 0 2px 18px 0 rgba(99, 102, 241, 0.32), inset 0 1px 0 rgba(255,255,255,0.1);
+        box-shadow: 0 2px 12px 0 rgba(37, 99, 235, 0.28);
     }
     .submit-btn:hover:not(:disabled) {
-        box-shadow: 0 4px 24px 0 rgba(99, 102, 241, 0.5), inset 0 1px 0 rgba(255,255,255,0.15);
+        box-shadow: 0 4px 20px 0 rgba(37, 99, 235, 0.4);
         transform: translateY(-1px);
     }
     .submit-btn:active:not(:disabled) {
@@ -158,12 +159,12 @@ export default function MarkAttendanceForm({ onMarked }) {
 `}</style>
 
             <div className="flex items-center gap-3 mb-5">
-                <div className="w-8 h-8 rounded-lg bg-indigo-500/10 flex items-center justify-center">
-                    <CalendarCheck size={15} className="text-white" />
+                <div className="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center">
+                    <CalendarCheck size={15} className="text-blue-600" />
                 </div>
                 <div>
-                    <h2 className="text-sm font-semibold text-white">Mark Attendance</h2>
-                    <p className="text-xs text-gray-400">Record today's attendance</p>
+                    <h2 className="text-sm font-semibold text-slate-800">Mark Attendance</h2>
+                    <p className="text-xs text-slate-500">Record today's attendance</p>
                 </div>
             </div>
 
@@ -212,8 +213,8 @@ export default function MarkAttendanceForm({ onMarked }) {
                 {/* Status toggle */}
                 <div>
                     <label className="label">Status</label>
-                    <div className="flex rounded-lg border border-neutral-700/60 overflow-hidden"
-                        style={{ background: '#0d0d0d' }}>
+                    <div className="flex rounded-lg border border-slate-200 overflow-hidden"
+                        style={{ background: '#f8fafc' }}>
                         {['PRESENT', 'ABSENT'].map(s => (
                             <button
                                 key={s}

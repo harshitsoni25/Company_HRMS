@@ -118,12 +118,13 @@ export default function Attendance() {
         box-shadow: 0 0 16px 0 rgba(239, 68, 68, 0.35), inset 0 1px 0 rgba(255,255,255,0.12);
     }
     .status-btn.inactive {
-        background: #141414;
-        color: #6b7280;
+        background: #f8fafc;
+        color: #94a3b8;
+        border: 1px solid #e2e8f0;
     }
     .status-btn.inactive:hover {
-        background: #1e1e1e;
-        color: #9ca3af;
+        background: #f1f5f9;
+        color: #64748b;
     }
 
     /* ── Submit button ── */
@@ -141,12 +142,12 @@ export default function Attendance() {
         cursor: pointer;
         letter-spacing: 0.03em;
         transition: opacity 0.2s, box-shadow 0.2s, transform 0.12s;
-        background: linear-gradient(135deg, #3730a3 0%, #4f46e5 50%, #6366f1 100%);
+        background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 50%, #3b82f6 100%);
         color: #fff;
-        box-shadow: 0 2px 18px 0 rgba(99, 102, 241, 0.32), inset 0 1px 0 rgba(255,255,255,0.1);
+        box-shadow: 0 2px 12px 0 rgba(37, 99, 235, 0.28);
     }
     .submit-btn:hover:not(:disabled) {
-        box-shadow: 0 4px 24px 0 rgba(99, 102, 241, 0.5), inset 0 1px 0 rgba(255,255,255,0.15);
+        box-shadow: 0 4px 20px 0 rgba(37, 99, 235, 0.4);
         transform: translateY(-1px);
     }
     .submit-btn:active:not(:disabled) {
@@ -157,13 +158,13 @@ export default function Attendance() {
         cursor: not-allowed;
     }
 `}</style>
-                        <Filter size={13} className="absolute left-3 top-1/2 -translate-y-1/2 text-white pointer-events-none" />
+                        <Filter size={13} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none" />
                         <input
                             type="date"
                             value={dateFilter}
                             onChange={handleDateFilter}
                             max={new Date().toISOString().split('T')[0]}
-                            className="input date-input-styled pl-8 pr-3 w-44 text-white"
+                            className="input date-input-styled pl-8 pr-3 w-44"
                             placeholder="Filter by date"
                         />
                     </div>

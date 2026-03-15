@@ -16,7 +16,7 @@ const getDashboard = async (req, res) => {
           .limit(10),
       ]);
 
-    const presentDaysPerEmployee = await Attendance.aggregate([
+    const presentDaysRaw = await Attendance.aggregate([
       { $match: { status: "PRESENT" } },
       {
         $group: {
@@ -27,6 +27,15 @@ const getDashboard = async (req, res) => {
       },
       { $sort: { totalPresent: -1 } },
     ]);
+
+    const allEmployees = await Employee.find({}, "full_name employee_id");
+    const empMap = {};
+    allEmployees.forEach(e => { empMap[e._id.toString()] = e.full_name; });
+
+    const presentDaysPerEmployee = presentDaysRaw.map(row => ({
+      ...row,
+      full_name: empMap[row._id.toString()] || row.employee_id,
+    }));
 
     const weekStart = new Date();
     weekStart.setDate(weekStart.getDate() - 6);

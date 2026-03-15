@@ -4,12 +4,14 @@ import toast from 'react-hot-toast'
 import api from '../lib/api'
 import EmployeeList from '../components/EmployeeList'
 import AddEmployeeModal from '../components/AddEmployeeModal'
+import EditEmployeeModal from '../components/EditEmployeeModal'
 import DeleteConfirmDialog from '../components/DeleteConfirmDialog'
 
 export default function Employees() {
     const [employees, setEmployees] = useState([])
     const [loading, setLoading] = useState(true)
     const [showAdd, setShowAdd] = useState(false)
+    const [toEdit, setToEdit] = useState(null)
     const [toDelete, setToDelete] = useState(null)
     const [deleting, setDeleting] = useState(false)
 
@@ -28,6 +30,10 @@ export default function Employees() {
 
     const handleAdded = (newEmp) => {
         setEmployees(prev => [newEmp, ...prev])
+    }
+
+    const handleUpdated = (updatedEmp) => {
+        setEmployees(prev => prev.map(e => e._id === updatedEmp._id ? updatedEmp : e))
     }
 
     const handleDeleteConfirm = async () => {
@@ -63,12 +69,21 @@ export default function Employees() {
                 employees={employees}
                 loading={loading}
                 onDelete={setToDelete}
+                onEdit={setToEdit}
             />
 
             {showAdd && (
                 <AddEmployeeModal
                     onClose={() => setShowAdd(false)}
                     onAdded={handleAdded}
+                />
+            )}
+
+            {toEdit && (
+                <EditEmployeeModal
+                    employee={toEdit}
+                    onClose={() => setToEdit(null)}
+                    onUpdated={handleUpdated}
                 />
             )}
 

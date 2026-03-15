@@ -15,13 +15,13 @@
   }
 
   body {
-    @apply bg-black text-gray-200 font-sans;
+    @apply bg-slate-100 text-slate-800 font-sans;
     font-size: 14px;
   }
 
-  /* Date input calendar icon for dark theme */
+  /* Date input calendar icon for light theme */
   input[type="date"] {
-    color-scheme: dark;
+    color-scheme: light;
   }
 
   input[type="date"]::-webkit-calendar-picker-indicator {
@@ -40,11 +40,11 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-neutral-700 rounded-full;
+    @apply bg-slate-300 rounded-full;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    @apply bg-neutral-600;
+    @apply bg-slate-400;
   }
 }
 
@@ -53,23 +53,24 @@
 
   .btn-primary {
     @apply inline-flex items-center gap-2 px-4 py-2
-bg-indigo-600 hover:bg-indigo-700
 text-white text-sm font-medium rounded-lg
 transition duration-150
-focus:outline-none focus:ring-2 focus:ring-indigo-500;
+focus:outline-none focus:ring-2 focus:ring-blue-400;
+    background: linear-gradient(135deg, #4f8ef7 0%, #6c63ff 100%);
+    box-shadow: 0 4px 12px rgba(79,142,247,0.35);
   }
 
   .btn-secondary {
     @apply inline-flex items-center gap-2 px-4 py-2
-bg-neutral-900 hover:bg-neutral-800
-text-gray-200 text-sm font-medium rounded-lg
-border border-neutral-700
+bg-white hover:bg-slate-50
+text-slate-700 text-sm font-medium rounded-lg
+border border-slate-300
 transition duration-150;
   }
 
   .btn-danger {
     @apply inline-flex items-center gap-2 px-4 py-2
-bg-red-600 hover:bg-red-700
+bg-red-500 hover:bg-red-600
 text-white text-sm font-medium rounded-lg
 transition duration-150;
   }
@@ -77,22 +78,23 @@ transition duration-150;
   /* ── Cards ── */
 
   .card {
-    @apply bg-neutral-900 border border-neutral-800
-rounded-xl shadow-lg;
+    @apply bg-white border border-slate-200
+rounded-2xl;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
   }
 
   /* ── Form Inputs ── */
 
   .input {
     @apply w-full px-3 py-2 text-sm
-bg-neutral-900 border border-neutral-700
-rounded-lg text-gray-200
-placeholder-gray-500
-focus:outline-none focus:ring-2 focus:ring-indigo-500;
+bg-white border border-slate-300
+rounded-lg text-slate-800
+placeholder-slate-400
+focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400;
   }
 
   .label {
-    @apply block text-xs font-medium text-gray-400 mb-1.5;
+    @apply block text-xs font-medium text-slate-600 mb-1.5;
   }
 
   /* ── Table ── */
@@ -106,20 +108,20 @@ focus:outline-none focus:ring-2 focus:ring-indigo-500;
   }
 
   .table thead tr {
-    @apply border-b border-neutral-800;
+    @apply border-b border-slate-200 bg-slate-50;
   }
 
   .table thead th {
     @apply px-4 py-3 text-left text-xs font-semibold
-text-gray-400 uppercase tracking-wider;
+text-slate-500 uppercase tracking-wider;
   }
 
   .table tbody tr {
-    @apply border-b border-neutral-800 hover:bg-neutral-800/40 transition;
+    @apply border-b border-slate-100 hover:bg-slate-50 transition;
   }
 
   .table tbody td {
-    @apply px-4 py-3 text-gray-300;
+    @apply px-4 py-3 text-slate-700;
   }
 
   /* ── Badges ── */
@@ -127,19 +129,19 @@ text-gray-400 uppercase tracking-wider;
   .badge-present {
     @apply inline-flex items-center gap-1
 px-2.5 py-0.5 rounded-full text-xs font-medium
-bg-emerald-500/10 text-emerald-400;
+bg-emerald-50 text-emerald-700;
   }
 
   .badge-absent {
     @apply inline-flex items-center gap-1
 px-2.5 py-0.5 rounded-full text-xs font-medium
-bg-red-500/10 text-red-400;
+bg-red-50 text-red-600;
   }
 
   /* ── Skeleton Loader ── */
 
   .skeleton {
-    @apply animate-pulse bg-neutral-800 rounded-lg;
+    @apply animate-pulse bg-slate-200 rounded-lg;
   }
 
   /* ── Page Header ── */
@@ -149,10 +151,10 @@ bg-red-500/10 text-red-400;
   }
 
   .page-title {
-    @apply text-xl font-semibold text-white;
+    @apply text-xl font-semibold text-slate-800;
   }
 
   .page-subtitle {
-    @apply text-sm text-gray-400 mt-0.5;
+    @apply text-sm text-slate-500 mt-0.5;
   }
 }

@@ -26,14 +26,14 @@ function DarkTooltip({ active, payload, label }) {
     if (!active || !payload?.length) return null
     return (
         <div style={{
-            background: '#0d0d0d', border: '1px solid #1f1f1f', borderRadius: 8,
-            padding: '8px 14px', fontSize: 12, color: '#e5e7eb',
-            boxShadow: '0 8px 24px rgba(0,0,0,0.6)'
+            background: '#ffffff', border: '1px solid #e2e8f0', borderRadius: 8,
+            padding: '8px 14px', fontSize: 12, color: '#334155',
+            boxShadow: '0 4px 16px rgba(0,0,0,0.1)'
         }}>
-            <p style={{ color: '#6b7280', marginBottom: 4, fontSize: 11 }}>{label}</p>
+            <p style={{ color: '#94a3b8', marginBottom: 4, fontSize: 11 }}>{label}</p>
             {payload.map((p, i) => (
                 <p key={i} style={{ fontWeight: 600, color: p.color }}>
-                    {p.name}: <span style={{ color: '#f9fafb' }}>{p.value}</span>
+                    {p.name}: <span style={{ color: '#0f172a' }}>{p.value}</span>
                 </p>
             ))}
         </div>
@@ -46,18 +46,18 @@ function RecentAttendanceTable({ records, loading }) {
     if (loading) return (
         <div style={{ padding: '20px 24px', display: 'flex', flexDirection: 'column', gap: 10 }}>
             {[...Array(6)].map((_, i) => (
-                <div key={i} style={{ height: 36, borderRadius: 8, background: '#111', animation: 'dash-pulse 1.4s ease-in-out infinite', opacity: 1 - i * 0.12 }} />
+                <div key={i} style={{ height: 36, borderRadius: 8, background: '#e2e8f0', animation: 'dash-pulse 1.4s ease-in-out infinite', opacity: 1 - i * 0.12 }} />
             ))}
         </div>
     )
 
     if (!records?.length) return (
         <div style={{ padding: '48px 24px', textAlign: 'center' }}>
-            <div style={{ width: 44, height: 44, borderRadius: 12, background: '#111', border: '1px solid #1a1a1a', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 12px' }}>
-                <UserCheck size={18} color="#374151" />
+            <div style={{ width: 44, height: 44, borderRadius: 12, background: '#f1f5f9', border: '1px solid #e2e8f0', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 12px' }}>
+                <UserCheck size={18} color="#94a3b8" />
             </div>
-            <p style={{ fontSize: '0.8125rem', color: '#4b5563', fontWeight: 500 }}>No attendance records yet</p>
-            <p style={{ fontSize: '0.75rem', color: '#374151', marginTop: 4 }}>Head to Attendance to start marking</p>
+            <p style={{ fontSize: '0.8125rem', color: '#64748b', fontWeight: 500 }}>No attendance records yet</p>
+            <p style={{ fontSize: '0.75rem', color: '#94a3b8', marginTop: 4 }}>Head to Attendance to start marking</p>
         </div>
     )
 
@@ -65,9 +65,9 @@ function RecentAttendanceTable({ records, loading }) {
         <div style={{ overflowX: 'auto' }}>
             <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.8125rem' }}>
                 <thead>
-                    <tr style={{ background: '#060606' }}>
+                    <tr style={{ background: '#f8fafc' }}>
                         {['Employee', 'Department', 'Date', 'Status'].map(h => (
-                            <th key={h} style={{ textAlign: 'left', padding: '10px 24px', fontSize: '10.5px', fontWeight: 700, letterSpacing: '0.09em', textTransform: 'uppercase', color: '#374151' }}>{h}</th>
+                            <th key={h} style={{ textAlign: 'left', padding: '10px 24px', fontSize: '10.5px', fontWeight: 700, letterSpacing: '0.09em', textTransform: 'uppercase', color: '#94a3b8' }}>{h}</th>
                         ))}
                     </tr>
                 </thead>
@@ -76,34 +76,34 @@ function RecentAttendanceTable({ records, loading }) {
                         <tr key={record._id} className="dash-table-row">
                             <td style={{ padding: '13px 24px' }}>
                                 <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                                    <div style={{ width: 28, height: 28, borderRadius: '50%', background: 'linear-gradient(135deg, rgba(79,70,229,0.2), rgba(124,58,237,0.15))', border: '1px solid rgba(99,102,241,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                                        <span style={{ fontSize: 11, fontWeight: 700, color: '#818cf8' }}>
+                                    <div style={{ width: 28, height: 28, borderRadius: '50%', background: '#eff6ff', border: '1px solid #bfdbfe', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                                        <span style={{ fontSize: 11, fontWeight: 700, color: '#2563eb' }}>
                                             {(record.employee?.full_name || '?').charAt(0).toUpperCase()}
                                         </span>
                                     </div>
                                     <div>
-                                        <p style={{ fontWeight: 600, color: '#e5e7eb', lineHeight: 1 }}>{record.employee?.full_name || '—'}</p>
-                                        <p style={{ fontSize: 11, color: '#374151', fontFamily: 'ui-monospace, monospace', marginTop: 3, letterSpacing: '0.04em' }}>{record.employee?.employee_id}</p>
+                                        <p style={{ fontWeight: 600, color: '#1e293b', lineHeight: 1 }}>{record.employee?.full_name || '—'}</p>
+                                        <p style={{ fontSize: 11, color: '#94a3b8', fontFamily: 'ui-monospace, monospace', marginTop: 3, letterSpacing: '0.04em' }}>{record.employee?.employee_id}</p>
                                     </div>
                                 </div>
                             </td>
                             <td style={{ padding: '13px 24px' }}>
-                                <span style={{ fontSize: 11, fontWeight: 600, color: '#4b5563', background: '#111', border: '1px solid #1a1a1a', borderRadius: 6, padding: '2px 8px', letterSpacing: '0.03em' }}>
+                                <span style={{ fontSize: 11, fontWeight: 600, color: '#475569', background: '#f1f5f9', border: '1px solid #e2e8f0', borderRadius: 6, padding: '2px 8px', letterSpacing: '0.03em' }}>
                                     {record.employee?.department || '—'}
                                 </span>
                             </td>
                             <td style={{ padding: '13px 24px' }}>
-                                <span style={{ fontFamily: 'ui-monospace, monospace', fontSize: '0.775rem', color: '#4b5563' }}>{record.date}</span>
+                                <span style={{ fontFamily: 'ui-monospace, monospace', fontSize: '0.775rem', color: '#64748b' }}>{record.date}</span>
                             </td>
                             <td style={{ padding: '13px 24px' }}>
                                 <span style={{
                                     display: 'inline-flex', alignItems: 'center', gap: 6,
                                     padding: '3px 10px', borderRadius: 6, fontSize: 11, fontWeight: 600, letterSpacing: '0.05em',
                                     ...(record.status === 'PRESENT'
-                                        ? { background: 'rgba(16,185,129,0.08)', color: '#34d399', border: '1px solid rgba(16,185,129,0.15)' }
-                                        : { background: 'rgba(239,68,68,0.08)', color: '#f87171', border: '1px solid rgba(239,68,68,0.15)' })
+                                        ? { background: '#f0fdf4', color: '#16a34a', border: '1px solid #bbf7d0' }
+                                        : { background: '#fef2f2', color: '#dc2626', border: '1px solid #fecaca' })
                                 }}>
-                                    <span style={{ width: 5, height: 5, borderRadius: '50%', background: record.status === 'PRESENT' ? '#10b981' : '#ef4444', boxShadow: record.status === 'PRESENT' ? '0 0 5px rgba(16,185,129,0.7)' : '0 0 5px rgba(239,68,68,0.7)' }} />
+                                    <span style={{ width: 5, height: 5, borderRadius: '50%', background: record.status === 'PRESENT' ? '#16a34a' : '#dc2626' }} />
                                     {record.status}
                                 </span>
                             </td>
@@ -119,15 +119,15 @@ function PresentDaysTable({ data, loading }) {
     if (loading) return (
         <div style={{ padding: '20px', display: 'flex', flexDirection: 'column', gap: 10 }}>
             {[...Array(5)].map((_, i) => (
-                <div key={i} style={{ height: 36, borderRadius: 8, background: '#111', animation: 'dash-pulse 1.4s ease-in-out infinite', opacity: 1 - i * 0.15 }} />
+                <div key={i} style={{ height: 36, borderRadius: 8, background: '#e2e8f0', animation: 'dash-pulse 1.4s ease-in-out infinite', opacity: 1 - i * 0.15 }} />
             ))}
         </div>
     )
 
     if (!data?.length) return (
         <div style={{ padding: '48px 24px', textAlign: 'center' }}>
-            <TrendingUp size={20} color="#374151" style={{ margin: '0 auto 10px', display: 'block' }} />
-            <p style={{ fontSize: '0.8125rem', color: '#4b5563' }}>No data yet</p>
+            <TrendingUp size={20} color="#94a3b8" style={{ margin: '0 auto 10px', display: 'block' }} />
+            <p style={{ fontSize: '0.8125rem', color: '#64748b' }}>No data yet</p>
         </div>
     )
 
@@ -136,23 +136,27 @@ function PresentDaysTable({ data, loading }) {
 
     return (
         <div style={{ padding: '16px 20px', display: 'flex', flexDirection: 'column', gap: 12 }}>
-            {data.map((row, idx) => (
+            {data.map((row, idx) => {
+                const displayName = row.full_name || row.employee_id || '?'
+                const initials = displayName.charAt(0).toUpperCase()
+                return (
                 <div key={row._id || idx} style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                    <div style={{ width: 20, height: 20, borderRadius: '50%', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 10, fontWeight: 700, background: rankColors[idx] ? `${rankColors[idx]}22` : '#111', color: rankColors[idx] || '#4b5563', border: `1px solid ${rankColors[idx] ? rankColors[idx] + '44' : '#1f1f1f'}` }}>{idx + 1}</div>
-                    <div style={{ width: 28, height: 28, borderRadius: '50%', flexShrink: 0, background: 'linear-gradient(135deg, rgba(79,70,229,0.15), rgba(124,58,237,0.1))', border: '1px solid rgba(99,102,241,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                        <span style={{ fontSize: 11, fontWeight: 700, color: '#818cf8' }}>{(row.employee_id || '?').charAt(0)}</span>
+                    <div style={{ width: 20, height: 20, borderRadius: '50%', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 10, fontWeight: 700, background: rankColors[idx] ? `${rankColors[idx]}18` : '#f1f5f9', color: rankColors[idx] || '#64748b', border: `1px solid ${rankColors[idx] ? rankColors[idx] + '44' : '#e2e8f0'}` }}>{idx + 1}</div>
+                    <div style={{ width: 28, height: 28, borderRadius: '50%', flexShrink: 0, background: '#eff6ff', border: '1px solid #bfdbfe', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <span style={{ fontSize: 11, fontWeight: 700, color: '#2563eb' }}>{initials}</span>
                     </div>
                     <div style={{ flex: 1, minWidth: 0 }}>
                         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 5 }}>
-                            <span style={{ fontSize: 11, fontWeight: 600, color: '#9ca3af', fontFamily: 'ui-monospace, monospace', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{row.employee_id}</span>
-                            <span style={{ fontSize: 11, fontWeight: 700, color: '#34d399', marginLeft: 8, flexShrink: 0 }}>{row.totalPresent}d</span>
+                            <span style={{ fontSize: 11, fontWeight: 600, color: '#475569', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{displayName}</span>
+                            <span style={{ fontSize: 11, fontWeight: 700, color: '#16a34a', marginLeft: 8, flexShrink: 0 }}>{row.totalPresent}d</span>
                         </div>
-                        <div style={{ height: 4, background: '#111', borderRadius: 4, overflow: 'hidden', border: '1px solid #1a1a1a' }}>
-                            <div style={{ height: '100%', borderRadius: 4, background: 'linear-gradient(90deg, #059669, #34d399)', width: `${(row.totalPresent / max) * 100}%`, transition: 'width 0.6s ease', boxShadow: '0 0 6px rgba(52,211,153,0.4)' }} />
+                        <div style={{ height: 4, background: '#f1f5f9', borderRadius: 4, overflow: 'hidden', border: '1px solid #e2e8f0' }}>
+                            <div style={{ height: '100%', borderRadius: 4, background: 'linear-gradient(90deg, #16a34a, #4ade80)', width: `${(row.totalPresent / max) * 100}%`, transition: 'width 0.6s ease' }} />
                         </div>
                     </div>
                 </div>
-            ))}
+                )
+            })}
         </div>
     )
 }
@@ -160,19 +164,19 @@ function PresentDaysTable({ data, loading }) {
 // ── Analytics Charts ──────────────────────────────────────────────────────────
 
 function AttendanceViz({ stats, loading }) {
-    const CARD = { background: '#0a0a0a', border: '1px solid #161616', borderRadius: 14, overflow: 'hidden' }
-    const HDR = { padding: '14px 20px', borderBottom: '1px solid #161616', display: 'flex', alignItems: 'center', gap: 8 }
+    const CARD = { background: '#ffffff', border: '1px solid #e2e8f0', borderRadius: 14, overflow: 'hidden', boxShadow: '0 1px 3px rgba(0,0,0,0.05)' }
+    const HDR = { padding: '14px 20px', borderBottom: '1px solid #f1f5f9', display: 'flex', alignItems: 'center', gap: 8 }
 
     if (loading) return (
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20 }}>
             {[0, 1, 2].map(i => (
-                <div key={i} style={{ ...(i === 2 ? { gridColumn: '1 / -1' } : {}), height: 260, borderRadius: 14, background: '#0a0a0a', border: '1px solid #161616', animation: 'dash-pulse 1.4s ease-in-out infinite' }} />
+                <div key={i} style={{ ...(i === 2 ? { gridColumn: '1 / -1' } : {}), height: 260, borderRadius: 14, background: '#f1f5f9', border: '1px solid #e2e8f0', animation: 'dash-pulse 1.4s ease-in-out infinite' }} />
             ))}
         </div>
     )
 
     const barData = (stats?.presentDaysPerEmployee || []).slice(0, 8).map(row => ({
-        name: row.employee_id || '—',
+        name: row.full_name ? row.full_name.split(' ')[0] : (row.employee_id || '—'),
         present: row.totalPresent || 0,
     }))
 
@@ -205,10 +209,10 @@ function AttendanceViz({ stats, loading }) {
                 <div style={HDR}>
                     <BarChart2 size={13} color="#818cf8" />
                     <div>
-                        <p style={{ fontSize: '0.8125rem', fontWeight: 600, color: '#f9fafb' }}>
+                        <p style={{ fontSize: '0.8125rem', fontWeight: 600, color: '#1e293b' }}>
                             Present Days per Employee
                         </p>
-                        <p style={{ fontSize: 11, color: '#4b5563', marginTop: 2 }}>
+                        <p style={{ fontSize: 11, color: '#64748b', marginTop: 2 }}>
                             All-time attendance count
                         </p>
                     </div>
@@ -224,22 +228,22 @@ function AttendanceViz({ stats, loading }) {
                                 </linearGradient>
                             </defs>
 
-                            <CartesianGrid vertical={false} stroke="#141414" />
+                            <CartesianGrid vertical={false} stroke="#f1f5f9" />
 
                             <XAxis
                                 dataKey="name"
-                                tick={{ fill: '#4b5563', fontSize: 10, fontFamily: 'ui-monospace, monospace' }}
+                                tick={{ fill: '#94a3b8', fontSize: 10, fontFamily: 'ui-monospace, monospace' }}
                                 axisLine={false}
                                 tickLine={false}
                             />
 
                             <YAxis
-                                tick={{ fill: '#374151', fontSize: 10 }}
+                                tick={{ fill: '#cbd5e1', fontSize: 10 }}
                                 axisLine={false}
                                 tickLine={false}
                             />
 
-                            <Tooltip content={<DarkTooltip />} cursor={{ fill: 'rgba(255,255,255,0.025)' }} />
+                            <Tooltip content={<DarkTooltip />} cursor={{ fill: 'rgba(0,0,0,0.03)' }} />
 
                             <Bar dataKey="present" name="Days Present" radius={[4, 4, 0, 0]}>
                                 {barData.map((_, i) => (
@@ -261,10 +265,10 @@ function AttendanceViz({ stats, loading }) {
                 <div style={HDR}>
                     <TrendingUp size={13} color="#34d399" />
                     <div>
-                        <p style={{ fontSize: '0.8125rem', fontWeight: 600, color: '#f9fafb' }}>
+                        <p style={{ fontSize: '0.8125rem', fontWeight: 600, color: '#1e293b' }}>
                             Weekly Attendance Trend
                         </p>
-                        <p style={{ fontSize: 11, color: '#9ca3af', marginTop: 2 }}>
+                        <p style={{ fontSize: 11, color: '#64748b', marginTop: 2 }}>
                             Present vs Absent this week
                         </p>
                     </div>
@@ -286,25 +290,25 @@ function AttendanceViz({ stats, loading }) {
                                 </linearGradient>
                             </defs>
 
-                            <CartesianGrid vertical={false} stroke="#141414" />
+                            <CartesianGrid vertical={false} stroke="#f1f5f9" />
 
                             <XAxis
                                 dataKey="day"
-                                tick={{ fill: '#9ca3af', fontSize: 11 }}
+                                tick={{ fill: '#94a3b8', fontSize: 11 }}
                                 axisLine={false}
                                 tickLine={false}
                             />
 
                             <YAxis
-                                tick={{ fill: '#6b7280', fontSize: 10 }}
+                                tick={{ fill: '#cbd5e1', fontSize: 10 }}
                                 axisLine={false}
                                 tickLine={false}
                             />
 
-                            <Tooltip content={<DarkTooltip />} cursor={{ stroke: '#1f1f1f', strokeWidth: 1 }} />
+                            <Tooltip content={<DarkTooltip />} cursor={{ stroke: '#e2e8f0', strokeWidth: 1 }} />
 
                             <Legend
-                                wrapperStyle={{ fontSize: 11, color: '#9ca3af', paddingTop: 8 }}
+                                wrapperStyle={{ fontSize: 11, color: '#64748b', paddingTop: 8 }}
                                 iconType="circle"
                                 iconSize={7}
                             />
@@ -341,10 +345,10 @@ function AttendanceViz({ stats, loading }) {
                 <div style={HDR}>
                     <Users size={13} color="#f59e0b" />
                     <div>
-                        <p style={{ fontSize: '0.8125rem', fontWeight: 600, color: '#f9fafb' }}>
+                        <p style={{ fontSize: '0.8125rem', fontWeight: 600, color: '#1e293b' }}>
                             Today's Workforce Snapshot
                         </p>
-                        <p style={{ fontSize: 11, color: '#4b5563', marginTop: 2 }}>
+                        <p style={{ fontSize: 11, color: '#64748b', marginTop: 2 }}>
                             Present · Absent · Not yet marked
                         </p>
                     </div>
@@ -356,8 +360,8 @@ function AttendanceViz({ stats, loading }) {
                         height: 10,
                         borderRadius: 8,
                         overflow: 'hidden',
-                        background: '#0d0d0d',
-                        border: '1px solid #1a1a1a',
+                        background: '#f1f5f9',
+                        border: '1px solid #e2e8f0',
                         marginBottom: 18
                     }}>
                         {segs.map(s => s.value > 0 && (
@@ -404,23 +408,23 @@ export default function Dashboard() {
         ? Math.round((stats.presentToday / stats.totalEmployees) * 100)
         : null
 
-    const CARD = { background: '#0a0a0a', border: '1px solid #161616', borderRadius: 14, overflow: 'hidden' }
+    const CARD = { background: '#ffffff', border: '1px solid #e2e8f0', borderRadius: 14, overflow: 'hidden', boxShadow: '0 1px 3px rgba(0,0,0,0.05)' }
 
     return (
         <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
             <style>{`
                 @keyframes dash-pulse { 0%,100%{opacity:1} 50%{opacity:.35} }
-                .dash-table-row { border-top: 1px solid #111; transition: background .12s; }
-                .dash-table-row:hover { background: rgba(255,255,255,.018); }
+                .dash-table-row { border-top: 1px solid #f1f5f9; transition: background .12s; }
+                .dash-table-row:hover { background: #f8fafc; }
                 .dash-refresh-btn {
                     display:inline-flex; align-items:center; gap:6px;
-                    padding:7px 14px; border-radius:9px; border:1px solid #1f1f1f;
-                    background:#0d0d0d; color:#6b7280; font-size:.8rem;
+                    padding:7px 14px; border-radius:9px; border:1px solid #e2e8f0;
+                    background:#ffffff; color:#64748b; font-size:.8rem;
                     font-weight:500; cursor:pointer;
                     transition:background .15s,color .15s,border-color .15s;
                     letter-spacing:.02em;
                 }
-                .dash-refresh-btn:hover:not(:disabled){background:#141414;color:#9ca3af;border-color:#2a2a2a;}
+                .dash-refresh-btn:hover:not(:disabled){background:#f8fafc;color:#334155;border-color:#cbd5e1;}
                 .dash-refresh-btn:disabled{opacity:.4;cursor:not-allowed;}
                 @keyframes spin{to{transform:rotate(360deg)}}
             `}</style>
@@ -428,8 +432,8 @@ export default function Dashboard() {
             {/* Header */}
             <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between' }}>
                 <div>
-                    <h1 style={{ fontSize: '1.1875rem', fontWeight: 700, color: '#f9fafb', letterSpacing: '-0.01em' }}>Dashboard</h1>
-                    <p style={{ fontSize: '0.8rem', color: '#4b5563', marginTop: 3 }}>{todayLabel()}</p>
+                    <h1 style={{ fontSize: '1.1875rem', fontWeight: 700, color: '#0f172a', letterSpacing: '-0.01em' }}>Dashboard</h1>
+                    <p style={{ fontSize: '0.8rem', color: '#64748b', marginTop: 3 }}>{todayLabel()}</p>
                 </div>
                 <button onClick={() => fetchStats(true)} disabled={refreshing} className="dash-refresh-btn">
                     <RefreshCw size={12} style={refreshing ? { animation: 'spin 0.8s linear infinite' } : {}} />
@@ -450,8 +454,8 @@ export default function Dashboard() {
                 <div style={{ ...CARD, padding: '18px 24px' }}>
                     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12 }}>
                         <div>
-                            <p style={{ fontSize: '10px', fontWeight: 700, color: '#374151', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Today's Attendance Rate</p>
-                            <p style={{ fontSize: '1.75rem', fontWeight: 800, color: '#f9fafb', marginTop: 2, letterSpacing: '-0.02em' }}>{attendanceRate}%</p>
+                            <p style={{ fontSize: '10px', fontWeight: 700, color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Today's Attendance Rate</p>
+                            <p style={{ fontSize: '1.75rem', fontWeight: 800, color: '#0f172a', marginTop: 2, letterSpacing: '-0.02em' }}>{attendanceRate}%</p>
                         </div>
                         <div style={{
                             padding: '4px 12px', borderRadius: 8, fontSize: 11, fontWeight: 700, letterSpacing: '0.04em',
@@ -464,7 +468,7 @@ export default function Dashboard() {
                             {attendanceRate >= 80 ? '● GOOD' : attendanceRate >= 50 ? '● AVERAGE' : '● LOW'}
                         </div>
                     </div>
-                    <div style={{ height: 5, background: '#0d0d0d', borderRadius: 4, overflow: 'hidden', border: '1px solid #1a1a1a' }}>
+                    <div style={{ height: 5, background: '#f1f5f9', borderRadius: 4, overflow: 'hidden', border: '1px solid #e2e8f0' }}>
                         <div style={{
                             height: '100%', borderRadius: 4, transition: 'width .7s ease',
                             width: `${attendanceRate}%`,
@@ -480,7 +484,7 @@ export default function Dashboard() {
                                     : '0 0 8px rgba(248,113,113,0.5)'
                         }} />
                     </div>
-                    <p style={{ fontSize: '0.75rem', color: '#374151', marginTop: 10 }}>
+                    <p style={{ fontSize: '0.75rem', color: '#94a3b8', marginTop: 10 }}>
                         {stats?.presentToday} present · {stats?.absentToday} absent · {stats?.notMarkedToday} not marked
                     </p>
                 </div>
@@ -491,31 +495,31 @@ export default function Dashboard() {
             {/* Analytics Section */}
             <div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
-                    <BarChart2 size={13} color="#818cf8" />
-                    <h2 style={{ fontSize: '10.5px', fontWeight: 700, color: '#374151', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Analytics</h2>
-                    <div style={{ flex: 1, height: 1, background: 'linear-gradient(90deg,#1a1a1a,transparent)' }} />
+                    <BarChart2 size={13} color="#2563eb" />
+                    <h2 style={{ fontSize: '10.5px', fontWeight: 700, color: '#94a3b8', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Analytics</h2>
+                    <div style={{ flex: 1, height: 1, background: 'linear-gradient(90deg,#e2e8f0,transparent)' }} />
                 </div>
                 <AttendanceViz stats={stats} loading={loading} />
             </div>
             {/* Recent + Leaderboard */}
             <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: 20 }}>
                 <div style={CARD}>
-                    <div style={{ padding: '14px 24px', borderBottom: '1px solid #161616', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                    <div style={{ padding: '14px 24px', borderBottom: '1px solid #f1f5f9', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                         <div>
-                            <h2 style={{ fontSize: '0.8125rem', fontWeight: 600, color: '#f9fafb' }}>Recent Attendance</h2>
-                            <p style={{ fontSize: 11, color: '#4b5563', marginTop: 2 }}>Last 10 records across all employees</p>
+                            <h2 style={{ fontSize: '0.8125rem', fontWeight: 600, color: '#1e293b' }}>Recent Attendance</h2>
+                            <p style={{ fontSize: 11, color: '#64748b', marginTop: 2 }}>Last 10 records across all employees</p>
                         </div>
-                        <span style={{ fontSize: '10.5px', fontWeight: 600, color: '#4b5563', background: '#111', border: '1px solid #1f1f1f', borderRadius: 6, padding: '2px 8px', letterSpacing: '0.04em', textTransform: 'uppercase' }}>Live</span>
+                        <span style={{ fontSize: '10.5px', fontWeight: 600, color: '#2563eb', background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: 6, padding: '2px 8px', letterSpacing: '0.04em', textTransform: 'uppercase' }}>Live</span>
                     </div>
                     <RecentAttendanceTable records={stats?.recentAttendance} loading={loading} />
                 </div>
 
                 <div style={CARD}>
-                    <div style={{ padding: '14px 20px', borderBottom: '1px solid #161616', display: 'flex', alignItems: 'center', gap: 8 }}>
+                    <div style={{ padding: '14px 20px', borderBottom: '1px solid #f1f5f9', display: 'flex', alignItems: 'center', gap: 8 }}>
                         <Award size={13} color="#f59e0b" />
                         <div>
-                            <h2 style={{ fontSize: '0.8125rem', fontWeight: 600, color: '#f9fafb' }}>Top Attendance</h2>
-                            <p style={{ fontSize: 11, color: '#4b5563', marginTop: 2 }}>Total present days (all time)</p>
+                            <h2 style={{ fontSize: '0.8125rem', fontWeight: 600, color: '#1e293b' }}>Top Attendance</h2>
+                            <p style={{ fontSize: 11, color: '#64748b', marginTop: 2 }}>Total present days (all time)</p>
                         </div>
                     </div>
                     <PresentDaysTable data={stats?.presentDaysPerEmployee} loading={loading} />

@@ -89,4 +89,31 @@ const deleteEmployee = async (req, res) => {
   }
 };
 
-module.exports = { createEmployee, getAllEmployees, deleteEmployee };
+// PUT /api/employees/:id
+const updateEmployee = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { full_name, email, department } = req.body;
+
+    const employee = await Employee.findById(id);
+    if (!employee) {
+      return res.status(404).json({ error: "Not Found", message: "Employee not found." });
+    }
+
+    const existing = await Employee.findOne({ email: email.toLowerCase(), _id: { $ne: id } });
+    if (existing) {
+      return res.status(409).json({ error: "Conflict", message: `Email "${email}" is already registered.` });
+    }
+
+    employee.full_name = full_name;
+    employee.email = email.toLowerCase();
+    employee.department = department;
+    await employee.save();
+
+    return res.status(200).json(employee);
+  } catch (err) {
+    return res.status(500).json({ error: "Server error", message: err.message });
+  }
+};
+
+module.exports = { createEmployee, getAllEmployees, deleteEmployee, updateEmployee };
