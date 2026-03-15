@@ -29,7 +29,7 @@ export default function App() {
             }}
         />
 
-        <div className="flex min-h-screen bg-slate-100 text-slate-800">
+        <div className="flex h-screen overflow-hidden bg-slate-100 text-slate-800">
 
             {/* Mobile overlay */}
             {sidebarOpen && (

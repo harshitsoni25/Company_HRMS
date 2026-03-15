@@ -14,7 +14,7 @@ const navItems = [
 
 export default function Sidebar({ onClose }) {
     return (
-        <aside style={{ width: 240, minHeight: '100vh', background: 'linear-gradient(180deg, #1e2a4a 0%, #162040 100%)', borderRight: 'none', display: 'flex', flexDirection: 'column', fontFamily: 'inherit', boxShadow: '4px 0 15px rgba(0,0,0,0.15)' }}>
+        <aside style={{ width: 240, height: '100vh', background: 'linear-gradient(180deg, #1e2a4a 0%, #162040 100%)', borderRight: 'none', display: 'flex', flexDirection: 'column', fontFamily: 'inherit', boxShadow: '4px 0 15px rgba(0,0,0,0.15)' }}>
             <style>{`
                 .sidebar-logo-ring {
                     width: 38px;
