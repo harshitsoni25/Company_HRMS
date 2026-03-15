@@ -168,7 +168,7 @@ function AttendanceViz({ stats, loading }) {
     const HDR = { padding: '14px 20px', borderBottom: '1px solid #f1f5f9', display: 'flex', alignItems: 'center', gap: 8 }
 
     if (loading) return (
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20 }}>
+        <div className="chart-grid">
             {[0, 1, 2].map(i => (
                 <div key={i} style={{ ...(i === 2 ? { gridColumn: '1 / -1' } : {}), height: 260, borderRadius: 14, background: '#f1f5f9', border: '1px solid #e2e8f0', animation: 'dash-pulse 1.4s ease-in-out infinite' }} />
             ))}
@@ -202,7 +202,7 @@ function AttendanceViz({ stats, loading }) {
     ]
 
     return (
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20 }}>
+        <div className="chart-grid">
 
             {/* Bar Chart */}
             <div style={CARD}>
@@ -427,6 +427,14 @@ export default function Dashboard() {
                 .dash-refresh-btn:hover:not(:disabled){background:#f8fafc;color:#334155;border-color:#cbd5e1;}
                 .dash-refresh-btn:disabled{opacity:.4;cursor:not-allowed;}
                 @keyframes spin{to{transform:rotate(360deg)}}
+                .stat-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+                .chart-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+                .bottom-grid { display:grid; grid-template-columns:2fr 1fr; gap:20px; }
+                @media(max-width:640px){
+                    .stat-grid { grid-template-columns:repeat(2,1fr); gap:10px; }
+                    .chart-grid { grid-template-columns:1fr; }
+                    .bottom-grid { grid-template-columns:1fr; }
+                }
             `}</style>
 
             {/* Header */}
@@ -442,7 +450,7 @@ export default function Dashboard() {
             </div>
 
             {/* Stat Cards */}
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 16 }}>
+            <div className="stat-grid">
                 <StatCard label="Total Employees" value={stats?.totalEmployees} icon={Users} color="brand" loading={loading} />
                 <StatCard label="Present Today" value={stats?.presentToday} icon={UserCheck} color="emerald" loading={loading} />
                 <StatCard label="Absent Today" value={stats?.absentToday} icon={UserX} color="red" loading={loading} />
@@ -502,7 +510,7 @@ export default function Dashboard() {
                 <AttendanceViz stats={stats} loading={loading} />
             </div>
             {/* Recent + Leaderboard */}
-            <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: 20 }}>
+            <div className="bottom-grid">
                 <div style={CARD}>
                     <div style={{ padding: '14px 24px', borderBottom: '1px solid #f1f5f9', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                         <div>
