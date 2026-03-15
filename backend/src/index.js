@@ -48,6 +48,47 @@ app.use("/api/employees", employeeRoutes);
 app.use("/api/attendance", attendanceRoutes);
 app.use("/api/dashboard", dashboardRoutes);
 
+// One-time seed endpoint
+app.post("/api/seed", async (req, res) => {
+  const Employee = require("./models/Employee");
+  const Attendance = require("./models/Attendance");
+
+  const employees = [
+    { employee_id: "EMP001", full_name: "Aisha Sharma", email: "aisha.sharma@hrms.com", department: "Engineering" },
+    { employee_id: "EMP002", full_name: "Rohan Mehta", email: "rohan.mehta@hrms.com", department: "Engineering" },
+    { employee_id: "EMP003", full_name: "Priya Kapoor", email: "priya.kapoor@hrms.com", department: "Design" },
+    { employee_id: "EMP004", full_name: "Dev Patel", email: "dev.patel@hrms.com", department: "Product" },
+    { employee_id: "EMP005", full_name: "Neha Gupta", email: "neha.gupta@hrms.com", department: "HR" },
+  ];
+
+  try {
+    await Attendance.deleteMany({});
+    await Employee.deleteMany({});
+    const created = await Employee.insertMany(employees);
+
+    const today = new Date();
+    const attendanceRecords = [];
+    for (let i = 0; i < 7; i++) {
+      const d = new Date(today);
+      d.setDate(d.getDate() - i);
+      const dateStr = d.toISOString().split("T")[0];
+      for (const emp of created) {
+        attendanceRecords.push({
+          employee: emp._id,
+          employee_id: emp.employee_id,
+          date: dateStr,
+          status: Math.random() < 0.8 ? "PRESENT" : "ABSENT",
+        });
+      }
+    }
+    await Attendance.insertMany(attendanceRecords);
+
+    res.json({ success: true, employees: created.length, attendance: attendanceRecords.length });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
 app.use((req, res) => {
   res.status(404).json({
     error: "Not Found",
