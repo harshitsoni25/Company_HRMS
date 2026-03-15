@@ -177,10 +177,10 @@ export default function Attendance() {
                 </div>
             </div>
 
-            {/* Two-column layout */}
-            <div className="flex gap-6">
+            {/* Two-column layout — stacks on mobile */}
+            <div className="flex flex-col md:flex-row gap-6">
                 {/* Mark Attendance Form — left panel */}
-                <div className="w-72 flex-shrink-0">
+                <div className="w-full md:w-72 md:flex-shrink-0">
                     <MarkAttendanceForm onMarked={handleMarked} />
                 </div>
 
