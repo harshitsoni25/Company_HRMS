@@ -122,3 +122,10 @@ process.on("SIGINT", async () => {
   console.log("MongoDB connection closed.");
   process.exit(0);
 });
+
+// Keep-alive: ping self every 14 minutes to prevent Render free tier sleep
+const SELF_URL = process.env.RENDER_EXTERNAL_URL || `http://localhost:${PORT}`;
+setInterval(() => {
+  const http = SELF_URL.startsWith("https") ? require("https") : require("http");
+  http.get(`${SELF_URL}/health`, () => {}).on("error", () => {});
+}, 14 * 60 * 1000);
